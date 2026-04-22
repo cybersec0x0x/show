@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catarsis Project</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">C</div>
+        <div>
+          <p class="eyebrow">Catarsis Project</p>
+          <h1>Гайды для Dota 2 и OSINT</h1>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#products">Продукты</a>
+        <a href="#about">О проекте</a>
+        <a href="#contact">Контакты</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-backdrop">
+          <video autoplay muted loop playsinline>
+            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="hero-copy fade-up">
+          <p class="eyebrow">Новое из мира аналитики и киберспорта</p>
+          <h2>Catarsis Project — гайды и сборники, которые работают</h2>
+          <p>Полный набор материалов для Dota 2 и OSINT-разведки. Здесь описаны тайминги, персонажи, мета-герои, лоры, предметы, сайты поисковых систем, фишки и более 57 источников для поиска информации.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#products">Перейти к табам</a>
+            <a class="btn btn-secondary" href="#contact">Контакты</a>
+          </div>
+        </div>
+        <div class="hero-visual fade-up delay-1">
+          <div class="hero-card">
+            <h3>Что внутри</h3>
+            <ul>
+              <li>Тайминги и роли героев в матчах Dota 2</li>
+              <li>Актуальные метовые герои и сборки предметов</li>
+              <li>Лоры персонажей, стратегии и аналитика карты</li>
+              <li>Сайты, источники и инструменты OSINT</li>
+              <li>57+ ресурсов поиска, полезных расширений и трюков</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="products" class="section section-products">
+        <div class="section-header fade-up">
+          <p class="eyebrow">Продукты</p>
+          <h2>Полный набор для игроков и разведчиков</h2>
+        </div>
+        <div class="tabs fade-up delay-1" role="tablist" aria-label="Продукты Catarsis Project">
+          <button class="tab-button active" data-tab="dota" role="tab" aria-selected="true">Dota 2</button>
+          <button class="tab-button" data-tab="osint" role="tab" aria-selected="false">OSINT</button>
+        </div>
+        <div class="tab-panels fade-up delay-2">
+          <div class="tab-panel active" id="tab-dota" role="tabpanel">
+            <div class="tab-card">
+              <h3>Гайд Dota 2</h3>
+              <p>Desktop-гайд, который собрал все важное: героев, шоп, сборки, механику, тайминги и позиционную игру. Это идеальный старт для тех, кто хочет быстро прокачать свою игру.</p>
+              <ul>
+                <li>Каталог героев с портретами, ролями и дальними/ближними позициями.</li>
+                <li>Предметный шоп с анализом покупок, синергиями и билд-путями.</li>
+                <li>Тайминги, контроль линий и ключевые моменты для каждой стадии игры.</li>
+                <li>Разбор механик, умений, нейтральных предметов и управления картой.</li>
+                <li>Тактики на тимфайты, ганки и выходы из сложных ситуаций.</li>
+              </ul>
+            </div>
+            <div class="product-body">
+              <div class="feature-panel">
+                <div class="feature-pill">Герои</div>
+                <div class="feature-pill">Предметы</div>
+                <div class="feature-pill">Механики</div>
+                <div class="feature-pill">Тайминги</div>
+                <div class="feature-pill">Тактики</div>
+              </div>
+              <div class="gallery-grid">
+                <div class="image-card dota-image">
+                  <img src="Screenshot_4.png" alt="Скриншот гида Dota 2" loading="lazy" />
+                  <span>Реальный интерфейс гида</span>
+                </div>
+                <div class="image-card dota-image">
+                  <img src="Screenshot_6.png" alt="Дополнительный скриншот Dota 2" loading="lazy" />
+                  <span>Герои и предметы</span>
+                </div>
+              </div>
+            </div>
+            <a class="btn btn-primary" href="shows-dota-2-guide.zip" download onclick="alert('Для скачивания файлов откройте сайт через локальный сервер: в терминале выполните python -m http.server 8000, затем откройте http://localhost:8000'); return false;">Скачать гайд</a>
+          </div>
+          <div class="tab-panel" id="tab-osint" role="tabpanel">
+            <div class="tab-card">
+              <h3>OSINT-разведка</h3>
+              <p>Полный OSINT-пакет, включающий более 57 проверенных источников, рабочие инструменты и схемы для поиска данных с максимальной безопасностью.</p>
+              <ul>
+                <li>Каталог лучших сайтов и поисковых платформ для разведки.</li>
+                <li>57+ ресурсов, включая публичные базы, форумы, соцсети и утечки.</li>
+                <li>Практические фишки по сбору информации и разведке.</li>
+                <li>Защищенный подход: как искать быстро и не попадать под слежку.</li>
+                <li>Визуальные схемы, чек-листы и готовые инструкции для работы.</li>
+              </ul>
+            </div>
+            <div class="product-body">
+              <div class="feature-panel">
+                <div class="feature-pill">Источники</div>
+                <div class="feature-pill">Защита</div>
+                <div class="feature-pill">Фишки</div>
+                <div class="feature-pill">Визуалы</div>
+                <div class="feature-pill">Процессы</div>
+              </div>
+              <div class="gallery-grid">
+                <div class="image-card osint-image">
+                  <img src="Screenshot_2.png" alt="Скриншот OSINT-проекта" loading="lazy" />
+                  <span>Реальный рабочий интерфейс</span>
+                </div>
+                <div class="image-card osint-image">
+                  <img src="Screenshot_3.png" alt="Дополнительный скриншот OSINT" loading="lazy" />
+                  <span>Источники и инструменты</span>
+                </div>
+              </div>
+            </div>
+            <a class="btn btn-primary" href="osint-show.zip" download onclick="alert('Для скачивания файлов откройте сайт через локальный сервер: в терминале выполните python -m http.server 8000, затем откройте http://localhost:8000'); return false;">Скачать обзор</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-download fade-up delay-2">
+        <div class="section-header">
+          <p class="eyebrow">Загрузки</p>
+          <h2>Скачивай готовые пакеты</h2>
+        </div>
+        <div class="download-grid">
+          <article class="download-card">
+            <h3>Show's Dota 2 Guide</h3>
+            <p>Полный десктоп-гайд с героями, предметами, сборками, тактиками и стартовыми планами.</p>
+            <a class="btn btn-primary" href="shows-dota-2-guide.zip" download onclick="alert('Для скачивания файлов откройте сайт через локальный сервер: в терминале выполните python -m http.server 8000, затем откройте http://localhost:8000'); return false;">Скачать ZIP</a>
+          </article>
+          <article class="download-card">
+            <h3>OSINT Show</h3>
+            <p>Собранный набор из 57+ источников, сервисов и инструментов для безопасной разведки.</p>
+            <a class="btn btn-primary" href="osint-show.zip" download onclick="alert('Для скачивания файлов откройте сайт через локальный сервер: в терминале выполните python -m http.server 8000, затем откройте http://localhost:8000'); return false;">Скачать ZIP</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section-details fade-up delay-1">
+        <div class="section-header">
+          <p class="eyebrow">Внутри каждого материала</p>
+          <h2>Больше, чем просто гайд</h2>
+        </div>
+        <div class="details-grid">
+          <article class="detail-card">
+            <h3>Dota 2</h3>
+            <p>Глубокий разбор механик, ролей, стартовых покупок и метовых героев. В сборнике есть советы по позиции, поддержке, керри, а также разбор карт и ключевых моментов.</p>
+          </article>
+          <article class="detail-card">
+            <h3>OSINT</h3>
+            <p>Мощные сервисы, безопасные ресурсы и пошаговые подходы к разведке. Внутри — сайты, инструменты и 57+ источников для поиска людей, компаний и цифровых следов.</p>
+          </article>
+          <article class="detail-card">
+            <h3>Формат</h3>
+            <p>Материалы оформлены как полный набор для изучения и быстрого применения. Удобно читать, легко использовать и быстро внедрять в практику.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="about" class="section section-about fade-up delay-2">
+        <div class="section-header">
+          <p class="eyebrow">О проекте</p>
+          <h2>Catarsis Project — твоя база знаний</h2>
+        </div>
+        <div class="about-grid">
+          <div>
+            <p>Catarsis Project объединяет гайды по Dota 2 и материалы по OSINT-разведке. Каждый сборник построен так, чтобы ты мог быстро переключаться между теорией и практикой.</p>
+            <ul>
+              <li>Точное описание персонажей, мет и ролей.</li>
+              <li>Список полезных сайтов, инструментов и дополнительных ресурсов.</li>
+              <li>Рекомендации по анализу и глубокому изучению тем.</li>
+            </ul>
+          </div>
+          <div class="about-visual">
+            <div class="glow-box">Проект для тех, кто хочет больше</div>
+            <p>Catarsis Project сделан, чтобы объединять сильные стороны киберспорта и разведки, давать структуру знаниям и создавать яркую визуальную подачу.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section section-contact fade-up delay-3">
+        <div class="section-header">
+          <p class="eyebrow">Контакты</p>
+          <h2>Связаться с автором</h2>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3>GitHub</h3>
+            <p><a href="https://github.com/cybersec0x0x" target="_blank" rel="noreferrer">github.com/cybersec0x0x</a></p>
+          </div>
+          <div class="contact-card">
+            <h3>Discord</h3>
+            <p>h2sv (Show)</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>© 2026 Catarsis Project — автор <strong>cybersec0x0x</strong>. Контакт в Discord: <strong>h2sv (Show)</strong>.</p>
+    </footer>
+  </div>
+  <script>
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+
+    function updateTheme(tabName) {
+      document.body.classList.toggle('theme-dota', tabName === 'dota');
+      document.body.classList.toggle('theme-osint', tabName === 'osint');
+    }
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const target = button.dataset.tab;
+
+        tabButtons.forEach(btn => {
+          btn.classList.toggle('active', btn === button);
+          btn.setAttribute('aria-selected', btn === button ? 'true' : 'false');
+        });
+
+        tabPanels.forEach(panel => {
+          panel.classList.toggle('active', panel.id === `tab-${target}`);
+        });
+
+        updateTheme(target);
+      });
+    });
+
+    updateTheme('dota');
+  </script>
+</body>
+</html>

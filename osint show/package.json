@@ -1,0 +1,54 @@
+{
+  "name": "project-catarsis",
+  "version": "1.1.0",
+  "description": "Desktop OSINT and cyber intel workstation",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron .",
+    "build:win": "electron-builder --win nsis portable"
+  },
+  "author": "show",
+  "license": "MIT",
+  "build": {
+    "appId": "com.show.projectcatarsis",
+    "productName": "Project Catarsis",
+    "artifactName": "${productName}-${version}.${ext}",
+    "files": [
+      "index.html",
+      "style.css",
+      "app.js",
+      "main.js",
+      "preload.js",
+      "package.json"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "artifactName": "${productName}-Setup-${version}.${ext}"
+    }
+  },
+  "devDependencies": {
+    "electron": "^37.2.0",
+    "electron-builder": "^24.13.3"
+  }
+}

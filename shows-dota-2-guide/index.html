@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Show's Dota 2 Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="radiant" data-font="manrope">
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">D2</div>
+        <div>
+          <p class="eyebrow">New Player Desktop Guide</p>
+          <h1>Show's Dota 2 Guide</h1>
+        </div>
+      </div>
+
+      <nav class="nav-list">
+        <button class="nav-item active" data-page="dashboard" id="navDashboard">Dashboard</button>
+        <button class="nav-item" data-page="heroes" id="navHeroes">Heroes</button>
+        <button class="nav-item" data-page="items" id="navItems">Items</button>
+        <button class="nav-item" data-page="learn" id="navLearn">Learn</button>
+        <button class="nav-item" data-page="builds" id="navBuilds">Builds</button>
+        <button class="nav-item" data-page="tactics" id="navTactics">Tactics</button>
+        <button class="nav-item" data-page="studio" id="navStudio">Studio</button>
+        <button class="nav-item" data-page="creator" id="navCreator">Creator</button>
+      </nav>
+
+      <div class="side-card">
+        <p class="side-title" id="sideMissionLabel">Mission</p>
+        <p class="side-copy" id="sideMissionText">
+          One desktop guide for heroes, items, beginner builds, tactics, and essential Dota 2 mechanics.
+        </p>
+      </div>
+
+      <div class="side-card">
+        <p class="side-title" id="sideTipsLabel">Fast Tips</p>
+        <p class="side-copy" id="sideTipsText">
+          Use Alt+1..8 to change sections. Click hero build items to jump into the item catalog.
+        </p>
+      </div>
+    </aside>
+
+    <main class="content">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Dota 2 Learning Station</p>
+          <h2 id="heroTitleText">Heroes, shop items, mechanics, tutorials, starter builds, tactics, and visual customization.</h2>
+        </div>
+
+        <div class="stat-row">
+          <div class="stat-card">
+            <span id="heroCount">0</span>
+            <p id="heroCountLabel">heroes</p>
+          </div>
+          <div class="stat-card">
+            <span id="itemCount">0</span>
+            <p id="itemCountLabel">items</p>
+          </div>
+          <div class="stat-card">
+            <span id="favoritesCount">0</span>
+            <p id="favoritesCountLabel">favorites</p>
+          </div>
+        </div>
+      </header>
+
+      <section class="page active" id="dashboard">
+        <div class="grid">
+          <article class="panel panel-wide">
+            <p class="panel-kicker" id="dashOverviewKicker">Overview</p>
+            <h3 id="dashOverviewTitle">A visual beginner-first desktop guide for learning Dota 2 without drowning in tabs.</h3>
+            <p id="dashOverviewText">
+              Explore every hero, browse the item shop, read mechanics tutorials, learn position-based builds,
+              understand map tactics, and switch themes or language inside one desktop app.
+            </p>
+            <div class="action-row">
+              <button class="primary-btn" data-nav="heroes" id="dashOpenHeroes">Browse Heroes</button>
+              <button class="ghost-btn" data-nav="items" id="dashOpenItems">Open Item Shop</button>
+              <button class="ghost-btn" id="dashRandomHero">Random Hero</button>
+            </div>
+          </article>
+
+          <article class="panel">
+            <p class="panel-kicker" id="dashRoadmapKicker">Roadmap</p>
+            <div class="mini-list" id="roadmapList"></div>
+          </article>
+
+          <article class="panel">
+            <p class="panel-kicker" id="dashFavoritesKicker">Favorites</p>
+            <div class="mini-list" id="favoritesPreview"></div>
+          </article>
+
+          <article class="panel panel-wide">
+            <p class="panel-kicker" id="dashFeaturedHeroesKicker">Featured Heroes</p>
+            <div class="hero-strip" id="featuredHeroes"></div>
+          </article>
+
+          <article class="panel panel-wide">
+            <p class="panel-kicker" id="dashQuickLearnKicker">Quick Learn</p>
+            <div class="lesson-grid" id="dashboardLessons"></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="page" id="heroes">
+        <div class="page-head">
+          <div>
+            <p class="panel-kicker" id="heroesKicker">Hero Catalog</p>
+            <h3 id="heroesTitle">All Dota 2 heroes with portraits, stats, roles, beginner tips, and starter buying paths.</h3>
+          </div>
+        </div>
+
+        <div class="toolbar">
+          <label>
+            <span id="heroSearchLabel">Search hero</span>
+            <input id="heroSearch" type="text" placeholder="Axe, Crystal Maiden, Sniper">
+          </label>
+          <label>
+            <span id="heroAttrLabel">Attribute</span>
+            <select id="heroAttrFilter">
+              <option value="all">All</option>
+              <option value="str">Strength</option>
+              <option value="agi">Agility</option>
+              <option value="int">Intelligence</option>
+              <option value="all_attr">Universal</option>
+            </select>
+          </label>
+          <label>
+            <span id="heroRoleLabel">Role</span>
+            <select id="heroRoleFilter">
+              <option value="all">All</option>
+              <option value="Carry">Carry</option>
+              <option value="Support">Support</option>
+              <option value="Initiator">Initiator</option>
+              <option value="Nuker">Nuker</option>
+              <option value="Durable">Durable</option>
+              <option value="Disabler">Disabler</option>
+              <option value="Escape">Escape</option>
+              <option value="Pusher">Pusher</option>
+            </select>
+          </label>
+          <div class="toolbar-actions">
+            <button class="primary-btn" id="heroRandomButton">Random Hero</button>
+            <button class="ghost-btn" id="heroFavoritesButton">Only Favorites</button>
+          </div>
+        </div>
+
+        <div class="split-layout">
+          <div class="hero-grid" id="heroGrid"></div>
+          <aside class="detail-panel" id="heroDetail"></aside>
+        </div>
+      </section>
+
+      <section class="page" id="items">
+        <div class="page-head">
+          <div>
+            <p class="panel-kicker" id="itemsKicker">Item Shop</p>
+            <h3 id="itemsTitle">Shop catalog with images, costs, behavior, lore, notes, abilities, and components.</h3>
+          </div>
+        </div>
+
+        <div class="toolbar">
+          <label>
+            <span id="itemSearchLabel">Search item</span>
+            <input id="itemSearch" type="text" placeholder="Blink, Black King Bar, Force Staff">
+          </label>
+          <label>
+            <span id="itemCategoryLabel">Category</span>
+            <select id="itemCategoryFilter">
+              <option value="all">All</option>
+              <option value="Boots">Boots</option>
+              <option value="Support">Support</option>
+              <option value="Mobility">Mobility</option>
+              <option value="Defense">Defense</option>
+              <option value="Damage">Damage</option>
+              <option value="Utility">Utility</option>
+              <option value="Passive">Passive</option>
+              <option value="General">General</option>
+            </select>
+          </label>
+          <label>
+            <span id="itemSortLabel">Sort</span>
+            <select id="itemSort">
+              <option value="name">Name</option>
+              <option value="cost_desc">Highest Cost</option>
+              <option value="cost_asc">Lowest Cost</option>
+            </select>
+          </label>
+          <div class="toolbar-actions">
+            <button class="primary-btn" id="itemRandomButton">Random Item</button>
+            <button class="ghost-btn" id="itemFavoritesButton">Only Favorites</button>
+          </div>
+        </div>
+
+        <div class="split-layout">
+          <div class="item-grid" id="itemGrid"></div>
+          <aside class="detail-panel" id="itemDetail"></aside>
+        </div>
+      </section>
+
+      <section class="page" id="learn">
+        <div class="page-head">
+          <div>
+            <p class="panel-kicker" id="learnKicker">Tutorials</p>
+            <h3 id="learnTitle">Core mechanics, map logic, and the pieces every new Dota 2 player should understand first.</h3>
+          </div>
+        </div>
+
+        <div class="lesson-grid" id="lessonGrid"></div>
+      </section>
+
+      <section class="page" id="builds">
+        <div class="page-head">
+          <div>
+            <p class="panel-kicker" id="buildsKicker">Beginner Builds</p>
+            <h3 id="buildsTitle">Starter buying plans, role playbooks, and beginner-friendly hero suggestions.</h3>
+          </div>
+        </div>
+
+        <div class="grid">
+          <article class="panel panel-wide">
+            <p class="panel-kicker" id="buildsPlaybookKicker">Position Playbooks</p>
+            <div class="lesson-grid" id="playbookGrid"></div>
+          </article>
+
+          <article class="panel panel-wide">
+            <p class="panel-kicker" id="buildsBeginnersKicker">Beginner Heroes</p>
+            <div class="hero-strip" id="beginnerHeroes"></div>
+          </article>
+
+          <article class="panel">
+            <p class="panel-kicker" id="buildsChecklistKicker">Buying Checklist</p>
+            <div class="mini-list" id="buyingChecklist"></div>
+          </article>
+
+          <article class="panel">
+            <p class="panel-kicker" id="buildsMistakesKicker">Common Mistakes</p>
+            <div class="mini-list" id="buildMistakes"></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="page" id="tactics">
+        <div class="page-head">
+          <div>
+            <p class="panel-kicker" id="tacticsKicker">Tactics</p>
+            <h3 id="tacticsTitle">What to do in lane, when to rotate, how to use vision, when to push, and how not to throw your lead.</h3>
+          </div>
+        </div>
+
+        <div class="lesson-grid" id="tacticsGrid"></div>
+      </section>
+
+      <section class="page" id="studio">
+        <div class="page-head">
+          <div>
+            <p class="panel-kicker" id="studioKicker">Studio</p>
+            <h3 id="studioTitle">Switch theme, language, and fonts to make the guide feel like your own desktop manual.</h3>
+          </div>
+        </div>
+
+        <div class="studio-grid">
+          <article class="panel">
+            <p class="panel-kicker" id="studioThemeKicker">Themes</p>
+            <div class="option-row">
+              <button class="option-btn active" data-theme="radiant">Radiant</button>
+              <button class="option-btn" data-theme="dire">Dire</button>
+              <button class="option-btn" data-theme="arcane">Arcane</button>
+              <button class="option-btn" data-theme="obsidian">Obsidian</button>
+            </div>
+          </article>
+
+          <article class="panel">
+            <p class="panel-kicker" id="studioLangKicker">Language</p>
+            <div class="option-row">
+              <button class="option-btn active" data-language="ru">Русский</button>
+              <button class="option-btn" data-language="en">English</button>
+            </div>
+          </article>
+
+          <article class="panel">
+            <p class="panel-kicker" id="studioFontKicker">Font</p>
+            <div class="option-row">
+              <button class="option-btn active" data-font="manrope">Manrope</button>
+              <button class="option-btn" data-font="plex">IBM Plex Sans</button>
+              <button class="option-btn" data-font="sora">Sora</button>
+              <button class="option-btn" data-font="mono">JetBrains Mono</button>
+            </div>
+          </article>
+
+          <article class="panel panel-wide">
+            <p class="panel-kicker" id="studioPreviewKicker">Preview</p>
+            <div class="preview-panel">
+              <h3 id="studioPreviewTitle">Show's Dota 2 Guide</h3>
+              <p id="studioPreviewText">
+                Themes and language settings are stored locally, so the guide opens the way you like next time.
+              </p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="page" id="creator">
+        <div class="grid">
+          <article class="panel panel-wide hero-panel">
+            <p class="panel-kicker" id="creatorKicker">Creator</p>
+            <h3 id="creatorTitle">show made this guide as a cleaner, friendlier way to learn Dota 2 without hopping across dozens of tabs.</h3>
+            <p id="creatorText">
+              The idea is simple: one desktop app where a new player can explore heroes, understand items,
+              read tactics, review builds, and keep learning inside a polished interface.
+            </p>
+          </article>
+
+          <article class="panel">
+            <p class="panel-kicker" id="creatorContactKicker">Contact</p>
+            <p class="contact-line">Alias: <strong>show</strong></p>
+            <p class="contact-line">Discord: <strong>h2sv</strong></p>
+          </article>
+
+          <article class="panel">
+            <p class="panel-kicker" id="creatorNextKicker">Next Up</p>
+            <div class="mini-list" id="creatorNextList"></div>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast-stack" id="toastStack" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

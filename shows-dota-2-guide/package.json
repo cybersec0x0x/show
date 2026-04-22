@@ -1,0 +1,56 @@
+{
+  "name": "shows-dota-2-guide",
+  "version": "1.0.0",
+  "description": "Desktop Dota 2 beginner guide with heroes, items, tutorials, builds, and tactics",
+  "main": "main.js",
+  "scripts": {
+    "build:data": "node scripts/build-dota-data.mjs",
+    "start": "electron .",
+    "dev": "electron .",
+    "build:win": "electron-builder --win nsis portable"
+  },
+  "author": "show",
+  "license": "MIT",
+  "build": {
+    "appId": "com.show.dota2guide",
+    "productName": "Show's Dota 2 Guide",
+    "artifactName": "${productName}-${version}.${ext}",
+    "files": [
+      "index.html",
+      "style.css",
+      "app.js",
+      "main.js",
+      "preload.js",
+      "package.json",
+      "data/**/*"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "artifactName": "${productName}-Setup-${version}.${ext}"
+    }
+  },
+  "devDependencies": {
+    "electron": "^37.2.0",
+    "electron-builder": "^24.13.3"
+  }
+}

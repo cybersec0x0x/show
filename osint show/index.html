@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Catarsis Desktop</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Manrope:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="catarsis" data-font="manrope" data-density="cozy">
+  <div class="app-frame">
+    <aside class="sidebar">
+      <div class="brand-block">
+        <div class="brand-mark">C</div>
+        <div>
+          <p class="eyebrow">Desktop Intel Suite</p>
+          <h1>Project Catarsis</h1>
+        </div>
+      </div>
+
+      <nav class="nav-list">
+        <button class="nav-item active" data-target="dashboard">Dashboard</button>
+        <button class="nav-item" data-target="search">Search Hub</button>
+        <button class="nav-item" data-target="atlas">Resource Atlas</button>
+        <button class="nav-item" data-target="tools">Intel Tools</button>
+        <button class="nav-item" data-target="collections">Collections</button>
+        <button class="nav-item" data-target="studio">Studio</button>
+        <button class="nav-item" data-target="creator">Show</button>
+        <button class="nav-item" data-target="caseboard">Caseboard</button>
+      </nav>
+
+      <div class="sidebar-panel">
+        <p class="panel-title">Scope</p>
+        <p class="panel-copy">
+          A large desktop workstation for legal OSINT, cyber intel, open datasets, registries,
+          archives, maps, public databases, search routes, collections, and case-driven analysis.
+        </p>
+      </div>
+
+      <div class="sidebar-panel">
+        <p class="panel-title">Shortcuts</p>
+        <p class="panel-copy">
+          Press <code>/</code> to focus the main search. Use <code>Alt+1..8</code> to jump between pages.
+        </p>
+      </div>
+    </aside>
+
+    <main class="content">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Open Source Intelligence Desktop</p>
+          <h2>Search routes, open resources, public data libraries, visual themes, desktop workflow.</h2>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-card">
+            <span id="resourceCount">0</span>
+            <p>resources indexed</p>
+          </div>
+          <div class="stat-card">
+            <span id="bookmarkCount">0</span>
+            <p>items in collections</p>
+          </div>
+          <div class="stat-card">
+            <span id="caseCount">0</span>
+            <p>saved cases</p>
+          </div>
+          <div class="stat-card">
+            <span id="launchCount">0</span>
+            <p>recent launches</p>
+          </div>
+        </div>
+      </header>
+
+      <section class="page active" id="dashboard">
+        <div class="panel-grid">
+          <article class="glass-card spotlight">
+            <p class="card-kicker">Mission Control</p>
+            <h3>Project Catarsis is now a desktop command center with broad public-source coverage and a cleaner visual shell.</h3>
+            <p>
+              This build focuses on real workflow: search presets, public registries, cyber intel tools,
+              visual resource atlas, settings studio, collections, recent launches, import/export, and creator presence.
+            </p>
+            <div class="quick-actions">
+              <button class="primary-btn" data-nav="search">Open Search Hub</button>
+              <button class="ghost-btn" data-nav="atlas">Browse Resource Atlas</button>
+              <button class="ghost-btn" id="openRandomResource">Open Random Resource</button>
+            </div>
+          </article>
+
+          <article class="glass-card">
+            <p class="card-kicker">Feature Deck</p>
+            <ul class="feature-list">
+              <li>Category-based public search routing for people, company, cyber, domain, media, maps and archives.</li>
+              <li>Large atlas of open resources with filters, bookmarks and fast launch.</li>
+              <li>Theme studio with multiple themes, fonts, density modes and effect toggles.</li>
+              <li>Recent launches, search history, export and import for collections and cases.</li>
+              <li>Dedicated creator page for show and Discord contact h2sv.</li>
+            </ul>
+          </article>
+
+          <article class="glass-card accent-card">
+            <p class="card-kicker">Visual Fixes</p>
+            <p>
+              White menu edges were removed by resetting native button appearance, softening border strokes,
+              replacing hard panel separators, and adding theme controls for border-free layouts.
+            </p>
+          </article>
+
+          <article class="glass-card">
+            <p class="card-kicker">Search History</p>
+            <div class="activity-list" id="searchHistoryList"></div>
+          </article>
+
+          <article class="glass-card">
+            <p class="card-kicker">Recent Launches</p>
+            <div class="activity-list" id="recentLaunchesList"></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="page" id="search">
+        <div class="panel-grid">
+          <article class="glass-card wide-card">
+            <p class="card-kicker">Search Hub</p>
+            <h3>Build public search routes and open them one by one or as a batch.</h3>
+
+            <div class="search-toolbar">
+              <label class="full-span">
+                Query
+                <input id="searchQuery" type="text" placeholder="username, email, domain, IP, URL, hash, company, location">
+              </label>
+
+              <div class="chip-row" id="searchCategoryChips">
+                <button class="chip active" data-category="general">General</button>
+                <button class="chip" data-category="people">People</button>
+                <button class="chip" data-category="social">Social</button>
+                <button class="chip" data-category="domain">Domain</button>
+                <button class="chip" data-category="cyber">Cyber</button>
+                <button class="chip" data-category="company">Company</button>
+                <button class="chip" data-category="maps">Maps</button>
+                <button class="chip" data-category="media">Media</button>
+                <button class="chip" data-category="datasets">Data</button>
+                <button class="chip" data-category="archives">Archives</button>
+              </div>
+
+              <div class="actions-row">
+                <button class="primary-btn" id="buildSearchRoutes">Build Routes</button>
+                <button class="ghost-btn" id="openSearchBatch">Open Batch</button>
+                <button class="ghost-btn" id="copySearchQuery">Copy Query</button>
+              </div>
+            </div>
+
+            <div class="result-grid" id="searchResults"></div>
+          </article>
+
+          <article class="glass-card">
+            <p class="card-kicker">Route Logic</p>
+            <ul class="feature-list compact">
+              <li>Switch categories to change which public sources are generated.</li>
+              <li>Save useful cards into Collections for a permanent launch deck.</li>
+              <li>Batch mode opens the current result set with a short delay between launches.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="page" id="atlas">
+        <div class="panel-grid">
+          <article class="glass-card wide-card">
+            <p class="card-kicker">Resource Atlas</p>
+            <h3>Large visual index of open databases, registries, maps, archives, cyber intel sources, and research utilities.</h3>
+
+            <div class="atlas-toolbar">
+              <label>
+                Search atlas
+                <input id="atlasQuery" type="text" placeholder="certificates, sanctions, maps, companies, datasets">
+              </label>
+              <label>
+                Category
+                <select id="atlasFilter">
+                  <option value="all">All categories</option>
+                  <option value="people">People</option>
+                  <option value="social">Social</option>
+                  <option value="company">Company</option>
+                  <option value="cyber">Cyber</option>
+                  <option value="domain">Domain</option>
+                  <option value="media">Media</option>
+                  <option value="geo">Geo</option>
+                  <option value="datasets">Datasets</option>
+                </select>
+              </label>
+              <div class="actions-row">
+                <button class="primary-btn" id="atlasRandomButton">Random Pick</button>
+                <button class="ghost-btn" id="atlasOpenTop">Open Top 5</button>
+              </div>
+            </div>
+
+            <div class="resource-grid" id="atlasResults"></div>
+          </article>
+
+          <article class="glass-card">
+            <p class="card-kicker">Coverage</p>
+            <p>
+              The atlas includes company registries, sanctions data, open datasets, certificate lookup,
+              reverse image resources, maps, archives, threat intel tools, and research-oriented directories.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="page" id="tools">
+        <div class="panel-grid">
+          <article class="glass-card wide-card">
+            <p class="card-kicker">Intel Tools</p>
+            <h3>Specialized panels for common investigation targets.</h3>
+
+            <div class="tool-stack">
+              <div class="tool-block">
+                <h4>Identity</h4>
+                <div class="tool-form">
+                  <label>
+                    Username
+                    <input id="usernameInput" type="text" placeholder="show">
+                  </label>
+                  <label>
+                    Email or domain
+                    <input id="emailInput" type="text" placeholder="name@example.com">
+                  </label>
+                  <button class="primary-btn" id="buildIdentityLinks">Build</button>
+                </div>
+                <div class="result-grid" id="identityResults"></div>
+              </div>
+
+              <div class="tool-block">
+                <h4>Domain and Infrastructure</h4>
+                <div class="tool-form domain-form">
+                  <label>
+                    Domain or URL
+                    <input id="domainInput" type="text" placeholder="example.com">
+                  </label>
+                  <button class="primary-btn" id="buildDomainLinks">Build</button>
+                </div>
+                <div class="result-grid" id="domainResults"></div>
+              </div>
+
+              <div class="tool-block">
+                <h4>Media and Reverse Search</h4>
+                <div class="tool-form domain-form">
+                  <label>
+                    Image or page URL
+                    <input id="mediaInput" type="text" placeholder="https://example.com/photo.jpg">
+                  </label>
+                  <button class="primary-btn" id="buildMediaLinks">Build</button>
+                </div>
+                <div class="result-grid" id="mediaResults"></div>
+              </div>
+
+              <div class="tool-block">
+                <h4>Geo Verification</h4>
+                <div class="tool-form domain-form">
+                  <label>
+                    Place or coordinates
+                    <input id="geoInput" type="text" placeholder="50.4501, 30.5234">
+                  </label>
+                  <button class="primary-btn" id="buildGeoLinks">Build</button>
+                </div>
+                <div class="result-grid" id="geoResults"></div>
+              </div>
+
+              <div class="tool-block">
+                <h4>Cyber Intel</h4>
+                <div class="tool-form">
+                  <label>
+                    IOC, IP, URL, or domain
+                    <input id="iocInput" type="text" placeholder="8.8.8.8 or sample.example">
+                  </label>
+                  <label>
+                    Hash
+                    <input id="hashInput" type="text" placeholder="SHA256, MD5, or SHA1">
+                  </label>
+                  <button class="primary-btn" id="buildCyberLinks">Build</button>
+                </div>
+                <div class="result-grid" id="cyberResults"></div>
+              </div>
+
+              <div class="tool-block">
+                <h4>Company Lookup</h4>
+                <div class="tool-form domain-form">
+                  <label>
+                    Company or entity name
+                    <input id="companyInput" type="text" placeholder="OpenAI or any public company name">
+                  </label>
+                  <button class="primary-btn" id="buildCompanyLinks">Build</button>
+                </div>
+                <div class="result-grid" id="companyResults"></div>
+              </div>
+
+              <div class="tool-block">
+                <h4>Open Data and Docs</h4>
+                <div class="tool-form domain-form">
+                  <label>
+                    Dataset or document query
+                    <input id="datasetInput" type="text" placeholder="climate data, court documents, trade registry">
+                  </label>
+                  <button class="primary-btn" id="buildDatasetLinks">Build</button>
+                </div>
+                <div class="result-grid" id="datasetResults"></div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="page" id="collections">
+        <div class="panel-grid">
+          <article class="glass-card wide-card">
+            <p class="card-kicker">Collections</p>
+            <h3>Your saved resources and reusable launch deck.</h3>
+            <div class="actions-row">
+              <button class="primary-btn" id="openAllBookmarks">Open All</button>
+              <button class="ghost-btn" id="exportBookmarks">Export</button>
+              <button class="ghost-btn" id="importBookmarks">Import</button>
+              <button class="ghost-btn" id="clearBookmarks">Clear</button>
+            </div>
+            <div class="saved-cases" id="bookmarksList"></div>
+            <input id="bookmarksImportInput" type="file" accept=".json" hidden>
+          </article>
+
+          <article class="glass-card">
+            <p class="card-kicker">Collections Notes</p>
+            <p>
+              Save useful cards from Search Hub, Resource Atlas, or Intel Tools. This gives you a repeatable
+              launcher without rebuilding the same routes every time.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="page" id="studio">
+        <div class="panel-grid">
+          <article class="glass-card wide-card">
+            <p class="card-kicker">Studio</p>
+            <h3>Visual customization menu for themes, fonts, density, borders, and motion.</h3>
+
+            <div class="studio-grid">
+              <div class="studio-block">
+                <h4>Themes</h4>
+                <div class="option-grid">
+                  <button class="theme-option active" data-theme-value="catarsis">Catarsis</button>
+                  <button class="theme-option" data-theme-value="ember">Ember</button>
+                  <button class="theme-option" data-theme-value="glacier">Glacier</button>
+                  <button class="theme-option" data-theme-value="graphite">Graphite</button>
+                </div>
+              </div>
+
+              <div class="studio-block">
+                <h4>Fonts</h4>
+                <div class="option-grid">
+                  <button class="font-option active" data-font-value="manrope">Manrope</button>
+                  <button class="font-option" data-font-value="plex">IBM Plex Sans</button>
+                  <button class="font-option" data-font-value="sora">Sora</button>
+                  <button class="font-option" data-font-value="mono">JetBrains Mono</button>
+                </div>
+              </div>
+
+              <div class="studio-block">
+                <h4>Density</h4>
+                <div class="option-grid">
+                  <button class="density-option active" data-density-value="cozy">Cozy</button>
+                  <button class="density-option" data-density-value="compact">Compact</button>
+                  <button class="density-option" data-density-value="wide">Wide</button>
+                </div>
+              </div>
+
+              <div class="studio-block">
+                <h4>Visual toggles</h4>
+                <div class="toggle-grid">
+                  <label class="toggle-row">
+                    <input id="toggleBorders" type="checkbox" checked>
+                    <span>Show soft borders</span>
+                  </label>
+                  <label class="toggle-row">
+                    <input id="toggleGlow" type="checkbox" checked>
+                    <span>Enable glow</span>
+                  </label>
+                  <label class="toggle-row">
+                    <input id="toggleMotion" type="checkbox" checked>
+                    <span>Enable motion</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="preview-card">
+              <p class="card-kicker">Live Preview</p>
+              <h3>Project Catarsis Studio</h3>
+              <p>
+                Tune the interface until it feels like your own command center. All settings are saved locally
+                and restored when the desktop app opens again.
+              </p>
+            </div>
+          </article>
+
+          <article class="glass-card">
+            <p class="card-kicker">Why This Exists</p>
+            <p>
+              You asked for a menu to visually change the app, so Studio is now part of the product:
+              themes, fonts, density modes, border control, and motion control are built in.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="page" id="creator">
+        <div class="panel-grid">
+          <article class="glass-card spotlight creator-card">
+            <p class="card-kicker">Show</p>
+            <h3>Creator spotlight: show</h3>
+            <p>
+              Project Catarsis is positioned as a large desktop project with a custom aesthetic, public-source research workflow,
+              and a creator identity built into the app itself instead of hidden in a README.
+            </p>
+            <p>
+              The goal is to turn scattered tabs and ad hoc tools into one visual intelligence station:
+              search, atlas, tooling, collections, customization, notes, and a personal creator section.
+            </p>
+          </article>
+
+          <article class="glass-card">
+            <p class="card-kicker">Contacts</p>
+            <h3>Creator details</h3>
+            <p class="contact-line">Alias: <strong>show</strong></p>
+            <p class="contact-line">Discord: <strong>h2sv</strong></p>
+            <p>
+              This panel can later grow into a full about section with roadmap, social links, release notes,
+              and a public identity card for the project.
+            </p>
+          </article>
+
+          <article class="glass-card accent-card">
+            <p class="card-kicker">Project Direction</p>
+            <p>
+              Next layers can include entity graphing, workspace profiles, case export packs, plugin-like modules,
+              and a more advanced internal browser or investigation timeline.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="page" id="caseboard">
+        <div class="panel-grid">
+          <article class="glass-card wide-card">
+            <p class="card-kicker">Caseboard</p>
+            <h3>Save notes, hypotheses, timelines, indicators, and findings.</h3>
+
+            <div class="tool-form notes-form">
+              <label>
+                Case title
+                <input id="caseTitle" type="text" placeholder="Identity, domain, media, or IOC case">
+              </label>
+              <label>
+                Priority
+                <select id="casePriority">
+                  <option>Low</option>
+                  <option selected>Medium</option>
+                  <option>High</option>
+                </select>
+              </label>
+            </div>
+
+            <label class="stacked-field">
+              Notes
+              <textarea id="caseNotes" rows="8" placeholder="Sources, findings, links, indicators, timeline, assumptions, conclusions."></textarea>
+            </label>
+
+            <div class="actions-row">
+              <button class="primary-btn" id="saveCase">Save Case</button>
+              <button class="ghost-btn" id="exportCases">Export</button>
+              <button class="ghost-btn" id="importCases">Import</button>
+              <button class="ghost-btn" id="clearCases">Clear All</button>
+            </div>
+
+            <input id="casesImportInput" type="file" accept=".json" hidden>
+          </article>
+
+          <article class="glass-card">
+            <p class="card-kicker">Saved Cases</p>
+            <div id="savedCases" class="saved-cases"></div>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="toastStack" class="toast-stack" aria-live="polite"></div>
+
+  <template id="resultCardTemplate">
+    <article class="result-card">
+      <div>
+        <p class="result-title"></p>
+        <span class="result-caption"></span>
+      </div>
+      <div class="card-actions">
+        <button class="bookmark-btn" type="button">Save</button>
+        <button class="result-link" type="button">Open</button>
+      </div>
+    </article>
+  </template>
+
+  <template id="resourceCardTemplate">
+    <article class="resource-card">
+      <div class="resource-topline">
+        <span class="resource-category"></span>
+        <button class="bookmark-btn" type="button">Save</button>
+      </div>
+      <h4 class="resource-title"></h4>
+      <p class="resource-description"></p>
+      <p class="resource-tags"></p>
+      <button class="result-link" type="button">Open</button>
+    </article>
+  </template>
+
+  <template id="savedCaseTemplate">
+    <article class="saved-case-card">
+      <div class="saved-case-topline">
+        <strong class="saved-case-title"></strong>
+        <span class="saved-case-priority"></span>
+      </div>
+      <p class="saved-case-date"></p>
+      <p class="saved-case-notes"></p>
+    </article>
+  </template>
+
+  <template id="bookmarkTemplate">
+    <article class="bookmark-card">
+      <div>
+        <p class="result-title"></p>
+        <span class="result-caption"></span>
+      </div>
+      <div class="card-actions">
+        <button class="ghost-btn bookmark-remove" type="button">Remove</button>
+        <button class="result-link" type="button">Open</button>
+      </div>
+    </article>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
